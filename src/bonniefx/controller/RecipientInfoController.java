@@ -36,16 +36,20 @@ public class RecipientInfoController implements Initializable {
     ToggleGroup tg;
 
     public void switchScene(ActionEvent event) throws IOException {
+        // todo validate input
+
+
+        // add recipient info to sale
         String name = recipientName.getText();
         LocalDate dob = dateOfBirth.getValue();
         LocalDate dod = dateOfDeath.getValue();
         boolean deceased = isDeceased.isSelected();
         SaleCreator.getInstance().getSale().setRecipient(new Recipient(name, deceased, dob, dod));
         System.out.println(SaleCreator.getInstance().getSale().getRecipient().toString());
-        Parent p = FXMLLoader.load(getClass().getResource("../view/directorsInfo.fxml"));
-        Scene scene = new Scene(p);
 
-        // get the stage
+        // switch to product info page
+        Parent p = FXMLLoader.load(getClass().getResource("../view/productInfo.fxml"));
+        Scene scene = new Scene(p);
         Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
         window.setScene(scene);
     }

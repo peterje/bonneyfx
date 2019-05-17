@@ -68,9 +68,16 @@ public class DirectorsInfoController implements Initializable {
     }
 
     public void switchScene(ActionEvent event) throws IOException {
-        // construct the primary director
-        primaryServiceDirector = new SalesPerson(primaryName.getText(), Double.parseDouble(primaryPCT.getText()));
+        //TODO Validate user input
 
+        // construct the primary director
+        try {
+            primaryServiceDirector = new SalesPerson(primaryName.getText(), Double.parseDouble(primaryPCT.getText()));
+        } catch (NumberFormatException e) {
+            System.err.println("Not a valid split");
+        }
+
+        // construct secondary director list
         secondarySalesPeople = new ArrayList<SalesPerson>();
         List<String> directorInfo;
         HBox directorRow;
@@ -84,12 +91,14 @@ public class DirectorsInfoController implements Initializable {
             // create new sales rep with name string and sales pct
             secondarySalesPeople.add(new SalesPerson(directorInfo.get(0), Double.parseDouble(directorInfo.get(1))));
         }
+
+        // add sales group to sale
         SaleCreator.getInstance().getSale().setSalesGroup(new SalesGroup(primaryServiceDirector, secondarySalesPeople));
         System.out.println(SaleCreator.getInstance().getSale().getSalesGroup().toString());
+
+        // switch to recipient info page
         Parent p = FXMLLoader.load(getClass().getResource("../view/recipientInfo.fxml"));
         Scene scene = new Scene(p);
-
-        // get the stage
         Stage window = (Stage) (((Node) event.getSource()).getScene().getWindow());
         window.setScene(scene);
     }

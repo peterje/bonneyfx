@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 public class Sale {
     private Item item;
     private Recipient recipient;
+    private SalesGroup salesGroup;
+    private LocalDate dateOfPurchase;
 
     public Recipient getRecipient() {
         return recipient;
@@ -14,9 +16,6 @@ public class Sale {
     public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
     }
-
-    private SalesGroup salesGroup;
-    private LocalDate dateOfPurchase;
 
     public Sale(DateTimeFormatter dateFormat) {
         DateTimeFormatter dateFormat1 = dateFormat;

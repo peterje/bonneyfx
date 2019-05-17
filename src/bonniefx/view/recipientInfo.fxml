@@ -11,25 +11,25 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0">
                     <children>
-                        <Label alignment="CENTER" text="bonniefx.model.Recipient Info">
+                        <Label alignment="CENTER" text="Recipient Info">
                             <font>
                                 <Font name="System Bold" size="20.0"/>
                             </font>
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Label text="Name:">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                            </padding>
-                        </Label>
-                        <TextField fx:id="recipientName">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                            </padding>
+                        <TextField fx:id="recipientName" promptText="Name">
+                            <HBox.margin>
+                                <Insets left="10.0" right="10.0"/>
+                            </HBox.margin>
                         </TextField>
+                        <DatePicker fx:id="dateOfBirth" promptText="Date of Birth">
+                            <HBox.margin>
+                                <Insets left="10.0" right="10.0"/>
+                            </HBox.margin>
+                        </DatePicker>
                     </children>
                     <opaqueInsets>
                         <Insets/>
@@ -38,39 +38,17 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Label text="Date of Birth: ">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                            </padding>
-                        </Label>
-                        <DatePicker fx:id="dateOfBirth">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                            </padding>
-                        </DatePicker>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <ToggleButton fx:id="isDeceased" mnemonicParsing="false" text="Deceased">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                            </padding>
                             <HBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                <Insets left="10.0" right="10.0"/>
                             </HBox.margin>
                         </ToggleButton>
-                        <Label text="Date of Death: ">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                            </padding>
-                        </Label>
-                        <DatePicker fx:id="dateOfDeath">
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                            </padding>
+                        <DatePicker fx:id="dateOfDeath" promptText="Date of Death">
+                            <HBox.margin>
+                                <Insets left="10.0" right="10.0"/>
+                            </HBox.margin>
                         </DatePicker>
                     </children>
                 </HBox>

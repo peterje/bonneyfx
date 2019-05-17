@@ -7,11 +7,12 @@ public class Forethought extends Item {
     private int payPlan;
 
     public Forethought() {
-
     }
 
-    public Forethought(Product product) {
+    public Forethought(Product product, int payPlan) {
+
         super(product);
+        this.payPlan = payPlan;
     }
 
     public int getPayPlan() {

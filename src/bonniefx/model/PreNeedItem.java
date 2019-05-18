@@ -4,38 +4,50 @@ import org.joda.money.Money;
 
 public class PreNeedItem extends Item {
     private LeadCode leadCode;
-    private boolean paidInFull;
     private Money downPayment;
+    private PlotCode plotCode;
 
-    public PreNeedItem() {
 
-    }
-
-    public PreNeedItem(Product product, boolean paidInFull, Money downPayment, LeadCode leadCode) {
-        super(product);
-        this.paidInFull = paidInFull;
+    public PreNeedItem(String product, Money boardValue, Money downPayment, LeadCode leadCode, PlotCode plotCode) {
+        super(product, boardValue);
         this.downPayment = downPayment;
         this.leadCode = leadCode;
+        this.plotCode = plotCode;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        String NL = System.getProperty("line.separator");
+
+        result.append(this.getClass().getName() + "Object {" + NL);
+        result.append("Product: " + getProduct() + NL);
+        result.append("Value: " + getBoardValue() + NL);
+        result.append("Down Payment: " + downPayment + NL);
+        result.append("LeadCode: " + leadCode + NL);
+        result.append("PlotCode: " + plotCode + NL);
+        result.append("}");
+
+        return result.toString();
     }
 
     @Override
     public double getCommissionRate() {
-        Recipient recipient = getRecipient();
         double rate = 0.0;
 
-        if (getProduct() == Product.PROPERTY)
-            if (recipient.getPlotCode().isCremation())
+        if (getProduct().equals("Property"))
+            if (plotCode.isCremation())
                 rate = 0.19;
             else
                 rate = 0.15;
-        else if (getProduct() == Product.MERCHANDISE)
+        else if (getProduct().equals("Merchandise"))
             rate = 0.08;
-        else if (getProduct() == Product.INTERMENT)
+        else if (getProduct().equals("Interment"))
             rate = 0.03;
 
         if (!leadCode.isCompany())
             rate += 0.01;
-        if (paidInFull)
+        if (downPayment.equals(getBoardValue()))
             rate += 0.01;
 
         return rate;
@@ -45,7 +57,6 @@ public class PreNeedItem extends Item {
     public Money getFlatCommission() {
         return Utils.toUSD("0.00");
     }
-
 
     public Money getDeferred() {
         if (downPayment.isLessThan(getCommission()))
@@ -61,14 +72,6 @@ public class PreNeedItem extends Item {
 
     public void setLeadCode(LeadCode leadCode) {
         this.leadCode = leadCode;
-    }
-
-    public boolean isPaidInFull() {
-        return paidInFull;
-    }
-
-    public void setPaidInFull(boolean paidInFull) {
-        this.paidInFull = paidInFull;
     }
 
     public Money getDownPayment() {

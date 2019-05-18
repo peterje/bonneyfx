@@ -7,14 +7,10 @@ import java.math.RoundingMode;
 public abstract class Item {
 
     private Money boardValue;
-    private Product product;
-    private Recipient recipient;
+    private String product;
 
-    public Item() {
-    }
-
-
-    public Item(Product product) {
+    public Item(String product, Money boardValue) {
+        this.boardValue = boardValue;
         this.product = product;
     }
 
@@ -30,23 +26,15 @@ public abstract class Item {
         return boardValue;
     }
 
-    public Recipient getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(Recipient recipient) {
-        this.recipient = recipient;
-    }
-
     public void setBoardValue(Money boardValue) {
         this.boardValue = boardValue;
     }
 
-    public Product getProduct() {
+    public String getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(String product) {
         this.product = product;
     }
 

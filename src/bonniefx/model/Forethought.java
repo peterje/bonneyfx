@@ -6,12 +6,8 @@ public class Forethought extends Item {
 
     private int payPlan;
 
-    public Forethought() {
-    }
-
-    public Forethought(Product product, int payPlan) {
-
-        super(product);
+    public Forethought(String product, Money faceValue, int payPlan) {
+        super(product, faceValue);
         this.payPlan = payPlan;
     }
 
@@ -24,33 +20,48 @@ public class Forethought extends Item {
     }
 
     @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        String NL = System.getProperty("line.separator");
+
+        result.append(this.getClass().getName() + "Object {" + NL);
+        result.append("Product: " + getProduct() + NL);
+        result.append("Face Amount: " + getBoardValue() + NL);
+        result.append("Payment Plan: " + payPlan + " years" + NL);
+        result.append("}");
+
+        return result.toString();
+    }
+
+    @Override
     public double getCommissionRate() {
         double rate = 0.0;
-        if (getProduct() == Product.INSURANCE)
+        if (getProduct().equals("Insurance"))
             rate = getInsuranceRate();
-        else if (getProduct() == Product.TRUST)
+        else if (getProduct().equals("Trust"))
             rate = 0.03;
-        else if (getProduct() == Product.TRAVEL)
+        else if (getProduct().equals("Travel"))
             rate = 0.0;
         else
             System.err.println("invalid product");
-
         return rate;
     }
 
     @Override
     public Money getFlatCommission() {
-        if (getProduct() == Product.TRAVEL)
+
+        if (getProduct().equals("Travel"))
             return Utils.toUSD("85.00");
         else
             return Utils.toUSD("0.00");
     }
 
     private double getInsuranceRate() {
+        int recipientAge = Sale.getInstance().getRecipient().getAge();
+
         double rate = 0.0;
         int payIndex = 0;
         int ageIndex;
-        int age = getRecipient().getAge();
         double[][] rates = {
                 {0.070, 0.065, 0.060, 0.040},
                 {0.055, 0.050, 0.040, 0.030},
@@ -64,11 +75,11 @@ public class Forethought extends Item {
         else if (payPlan > 5 && payPlan <= 10)
             payIndex = 2;
 
-        if (age <= 70)
+        if (recipientAge <= 70)
             ageIndex = 0;
-        else if (age > 70 && age <= 80)
+        else if (recipientAge > 70 && recipientAge <= 80)
             ageIndex = 1;
-        else if (age > 80 && age <= 90)
+        else if (recipientAge > 80 && recipientAge <= 90)
             ageIndex = 2;
         else
             ageIndex = 3;

@@ -29,12 +29,15 @@ public class SalesGroup {
 
     @Override
     public String toString() {
-        String ret = "";
-        ret += "Primary Service Director: " + primaryServiceDirector.getName() + " Split: " + primaryServiceDirector.getSplitPCT() + "\n";
-        for (SalesPerson p : secondaryServiceDirectors)
-            ret += "Service Director: " + p.getName() + " Split: " + p.getSplitPCT() + "\n";
+        StringBuilder result = new StringBuilder();
+        String NL = System.getProperty("line.separator");
 
-        return ret;
+        result.append(this.getClass().getName() + " Object {" + NL);
+        result.append("Primary Service Director: " + primaryServiceDirector + NL);
+        for (SalesPerson s : secondaryServiceDirectors)
+            result.append("Service Director: " + s + NL);
+
+        return result.toString();
     }
 
 }

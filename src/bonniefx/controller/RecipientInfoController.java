@@ -1,7 +1,7 @@
 package bonniefx.controller;
 
 import bonniefx.model.Recipient;
-import bonniefx.model.SaleCreator;
+import bonniefx.model.Sale;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,35 +17,54 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RecipientInfoController implements Initializable {
 
+    ToggleGroup tg;
     @FXML
     private ToggleButton isDeceased;
-
     @FXML
     private DatePicker dateOfDeath;
-
     @FXML
     private TextField recipientName;
-
     @FXML
     private DatePicker dateOfBirth;
 
-    ToggleGroup tg;
+    private Alert alert;
+    private List<Node> inputNodes;
+
+    public boolean validInput() {
+        for (Node n : inputNodes) {
+            if (!n.isDisabled()) {
+                if (n instanceof TextField) {
+                    if (((TextField) n).getText().trim().isEmpty()) {
+                        return false;
+
+                    }
+                } else if (n instanceof DatePicker)
+                    if (((DatePicker) n).getValue() == null) {
+                        return false;
+                    }
+            }
+        }
+        return true;
+    }
 
     public void switchScene(ActionEvent event) throws IOException {
-        // todo validate input
-
+        if (!validInput()) {
+            alert.showAndWait().filter(response -> response == ButtonType.OK);
+            return;
+        }
 
         // add recipient info to sale
         String name = recipientName.getText();
         LocalDate dob = dateOfBirth.getValue();
         LocalDate dod = dateOfDeath.getValue();
         boolean deceased = isDeceased.isSelected();
-        SaleCreator.getInstance().getSale().setRecipient(new Recipient(name, deceased, dob, dod));
-        System.out.println(SaleCreator.getInstance().getSale().getRecipient().toString());
+        Sale.getInstance().setRecipient(new Recipient(name, deceased, dob, dod));
 
         // switch to product info page
         Parent p = FXMLLoader.load(getClass().getResource("../view/productInfo.fxml"));
@@ -55,6 +74,13 @@ public class RecipientInfoController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
+        alert = new Alert(Alert.AlertType.WARNING, "There are unfilled fields");
+        inputNodes = new ArrayList<Node>();
+
+        inputNodes.add(dateOfBirth);
+        inputNodes.add(dateOfDeath);
+        inputNodes.add(recipientName);
+
         dateOfDeath.setDisable(true);
         tg = new ToggleGroup();
         isDeceased.setToggleGroup(tg);

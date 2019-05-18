@@ -1,13 +1,16 @@
 package bonniefx.model;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import org.joda.money.Money;
 
 public class Sale {
+    private final static Sale instance = new Sale();
     private Item item;
     private Recipient recipient;
     private SalesGroup salesGroup;
-    private LocalDate dateOfPurchase;
+
+    public static Sale getInstance() {
+        return instance;
+    }
 
     public Recipient getRecipient() {
         return recipient;
@@ -17,15 +20,23 @@ public class Sale {
         this.recipient = recipient;
     }
 
-    public Sale(DateTimeFormatter dateFormat) {
-        DateTimeFormatter dateFormat1 = dateFormat;
-        LocalDate currentDate = LocalDate.now();
+    public Money getComission() {
+        return item.getCommission();
     }
 
     @Override
     public String toString() {
-        String ret = "";
-        return ret;
+        StringBuilder result = new StringBuilder();
+        String NL = System.getProperty("line.separator");
+
+        result.append(this.getClass().getName() + " Object {" + NL);
+        result.append("Item: " + item + NL);
+        result.append("Recipient: " + recipient + NL);
+        result.append("Sales Group: " + salesGroup + NL);
+        result.append("TOTAL COMMISSION: " + getComission() + NL);
+        result.append("}");
+
+        return result.toString();
     }
 
 

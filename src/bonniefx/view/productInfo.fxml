@@ -58,7 +58,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </opaqueInsets>
                     <children>
-                        <TextField fx:id="boardValue" prefHeight="29.0" prefWidth="150.0" promptText="Board Value">
+                        <TextField fx:id="boardValueField" prefHeight="29.0" prefWidth="150.0" promptText="Board Value">
                             <HBox.margin>
                                 <Insets left="10.0" right="10.0"/>
                             </HBox.margin>
@@ -68,7 +68,8 @@
                                 <Insets left="10.0" right="10.0"/>
                             </HBox.margin>
                         </TextField>
-                        <TextField fx:id="downPayment" prefHeight="29.0" prefWidth="150.0" promptText="Down Payment">
+                        <TextField fx:id="downPaymentField" prefHeight="29.0" prefWidth="150.0"
+                                   promptText="Down Payment">
                             <HBox.margin>
                                 <Insets left="10.0" right="10.0"/>
                             </HBox.margin>

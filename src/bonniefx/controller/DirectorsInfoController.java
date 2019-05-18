@@ -1,6 +1,6 @@
 package bonniefx.controller;
 
-import bonniefx.model.SaleCreator;
+import bonniefx.model.Sale;
 import bonniefx.model.SalesGroup;
 import bonniefx.model.SalesPerson;
 import javafx.event.ActionEvent;
@@ -52,8 +52,9 @@ public class DirectorsInfoController implements Initializable {
     private ArrayList<SalesPerson> secondarySalesPeople;
 
     public void addDirector(ActionEvent event) {
+        // todo fix double click big
         if (lastDirectorID < 3) {
-            directorBoxes[lastDirectorID].setVisible(true);
+            directorBoxes[lastDirectorID].setDisable(false);
             if (lastDirectorID < 2)
                 lastDirectorID++;
         }
@@ -61,7 +62,9 @@ public class DirectorsInfoController implements Initializable {
 
     public void removeDirector(ActionEvent event) {
         if (lastDirectorID >= 0) {
-            directorBoxes[lastDirectorID].setVisible(false);
+            directorBoxes[lastDirectorID].setDisable(true);
+            ((TextField) (directorBoxes[lastDirectorID].getChildren().get(0))).clear();
+            ((TextField) (directorBoxes[lastDirectorID].getChildren().get(1))).clear();
             if (lastDirectorID > 0)
                 lastDirectorID--;
         }
@@ -93,8 +96,7 @@ public class DirectorsInfoController implements Initializable {
         }
 
         // add sales group to sale
-        SaleCreator.getInstance().getSale().setSalesGroup(new SalesGroup(primaryServiceDirector, secondarySalesPeople));
-        System.out.println(SaleCreator.getInstance().getSale().getSalesGroup().toString());
+        Sale.getInstance().setSalesGroup(new SalesGroup(primaryServiceDirector, secondarySalesPeople));
 
         // switch to recipient info page
         Parent p = FXMLLoader.load(getClass().getResource("../view/recipientInfo.fxml"));
@@ -109,10 +111,10 @@ public class DirectorsInfoController implements Initializable {
         directorBoxes[1] = director2;
         directorBoxes[2] = director3;
 
-        director0.setVisible(true);
-        director1.setVisible(false);
-        director2.setVisible(false);
-        director3.setVisible(false);
+        director1.setDisable(true);
+        director2.setDisable(true);
+        director3.setDisable(true);
+
     }
 
 }

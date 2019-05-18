@@ -19,6 +19,8 @@ public abstract class Item {
     public abstract Money getFlatCommission();
 
     public Money getCommission() {
+        System.out.println("bv" + getBoardValue());
+        System.out.println("total commission" + getBoardValue().multipliedBy(getCommissionRate(), RoundingMode.UP));
         return getBoardValue().multipliedBy(getCommissionRate(), RoundingMode.UP).plus(getFlatCommission());
     }
 

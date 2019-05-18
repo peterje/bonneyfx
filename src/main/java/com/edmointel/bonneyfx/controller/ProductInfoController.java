@@ -129,6 +129,8 @@ public class ProductInfoController implements Initializable {
         }
         Sale.getInstance().setItem(item);
         System.out.println(Sale.getInstance());
+        System.out.println(Sale.getInstance().getItem().getCommissionRate());
+
 
     }
 

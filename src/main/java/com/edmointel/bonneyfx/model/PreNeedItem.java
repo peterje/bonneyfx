@@ -45,9 +45,9 @@ public class PreNeedItem extends Item {
         else if (getProduct().equals("Interment"))
             rate = 0.03;
 
-        if (!leadCode.isCompany())
-            rate += 0.01;
-        if (downPayment.equals(getBoardValue()))
+        if (leadCode.isCompany()) // assume personal lead
+            rate -= 0.01;
+        if (downPayment.equals(getBoardValue())) // assume is not paid in full
             rate += 0.01;
 
         return rate;

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.edmointel.bonney</groupId>
-    <artifactId>BonneyMaven</artifactId>
+    <artifactId>bonneyfx</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 

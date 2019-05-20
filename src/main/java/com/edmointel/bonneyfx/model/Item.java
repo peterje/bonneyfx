@@ -7,11 +7,13 @@ import java.math.RoundingMode;
 public abstract class Item {
 
     private Money boardValue;
-    private String product;
+    private Product product;
+    public Sale sale;
 
-    public Item(String product, Money boardValue) {
+    public Item(Product product, Money boardValue, Sale sale) {
         this.boardValue = boardValue;
         this.product = product;
+        this.sale = sale;
     }
 
     public abstract double getCommissionRate();
@@ -19,8 +21,6 @@ public abstract class Item {
     public abstract Money getFlatCommission();
 
     public Money getCommission() {
-        System.out.println("bv" + getBoardValue());
-        System.out.println("total commission" + getBoardValue().multipliedBy(getCommissionRate(), RoundingMode.UP));
         return getBoardValue().multipliedBy(getCommissionRate(), RoundingMode.UP).plus(getFlatCommission());
     }
 
@@ -28,16 +28,8 @@ public abstract class Item {
         return boardValue;
     }
 
-    public void setBoardValue(Money boardValue) {
-        this.boardValue = boardValue;
-    }
-
-    public String getProduct() {
+    public Product getProduct() {
         return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
     }
 
 }

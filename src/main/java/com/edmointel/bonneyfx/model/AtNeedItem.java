@@ -6,8 +6,8 @@ public class AtNeedItem extends Item {
 
     private PlotCode plotCode;
 
-    public AtNeedItem(String product, Money boardValue, PlotCode plotCode) {
-        super(product, boardValue);
+    public AtNeedItem(Product product, Money boardValue, Sale sale, PlotCode plotCode) {
+        super(product, boardValue, sale);
         this.plotCode = plotCode;
     }
 
@@ -26,9 +26,9 @@ public class AtNeedItem extends Item {
     }
 
     public double getCommissionRate() {
-        Recipient recipient = Sale.getInstance().getRecipient();
+        Recipient recipient = sale.getRecipient();
         double rate = 0.0;
-        if (getProduct().equals("Property")) {
+        if (getProduct().equals(Product.PROPERTY)) {
             if (plotCode.isCremation())
                 rate = 0.19;
             else // non cremation
@@ -36,13 +36,10 @@ public class AtNeedItem extends Item {
                     rate = 0.15;
                 else
                     rate = 0.08;
-        } else if (getProduct().equals("Merchandise"))
+        } else if (getProduct().equals(Product.MERCHANDISE))
             rate = 0.05;
-        else if (getProduct().equals("Interment"))
+        else if (getProduct().equals(Product.INTERMENT))
             rate = 0.0;
-        else
-            System.err.println("bonneyfx.model.AtNeedItem with non AtNeed product: " + getProduct());
-
         return rate;
     }
 
@@ -50,5 +47,4 @@ public class AtNeedItem extends Item {
     public Money getFlatCommission() {
         return Utils.toUSD("0.00");
     }
-
 }

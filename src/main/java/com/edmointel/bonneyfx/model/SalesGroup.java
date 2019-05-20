@@ -11,22 +11,6 @@ public class SalesGroup {
         this.secondaryServiceDirectors = salesPeople;
     }
 
-    public void addServiceDirector(SalesPerson serviceDirector) {
-        secondaryServiceDirectors.add(serviceDirector);
-    }
-
-    public SalesPerson getPrimaryServiceDirector() {
-        return primaryServiceDirector;
-    }
-
-    public void setPrimaryServiceDirector(SalesPerson primaryServiceDirector) {
-        this.primaryServiceDirector = primaryServiceDirector;
-    }
-
-    public ArrayList<SalesPerson> getSecondaryServiceDirectors() {
-        return secondaryServiceDirectors;
-    }
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();

@@ -6,16 +6,8 @@ public class Forethought extends Item {
 
     private int payPlan;
 
-    public Forethought(String product, Money faceValue, int payPlan) {
-        super(product, faceValue);
-        this.payPlan = payPlan;
-    }
-
-    public int getPayPlan() {
-        return payPlan;
-    }
-
-    public void setPayPlan(int payPlan) {
+    public Forethought(Product product, Money faceValue, Sale sale, int payPlan) {
+        super(product, faceValue, sale);
         this.payPlan = payPlan;
     }
 
@@ -36,28 +28,27 @@ public class Forethought extends Item {
     @Override
     public double getCommissionRate() {
         double rate = 0.0;
-        if (getProduct().equals("Insurance"))
+        Product product = getProduct();
+        if (product.equals(Product.INSURANCE))
             rate = getInsuranceRate();
-        else if (getProduct().equals("Trust"))
+        else if (product.equals(Product.TRUST))
             rate = 0.03;
-        else if (getProduct().equals("Travel"))
+        else if (product.equals(Product.TRAVEL))
             rate = 0.0;
-        else
-            System.err.println("invalid product");
         return rate;
     }
 
     @Override
     public Money getFlatCommission() {
 
-        if (getProduct().equals("Travel"))
+        if (getProduct().equals(Product.TRAVEL))
             return Utils.toUSD("85.00");
         else
             return Utils.toUSD("0.00");
     }
 
     private double getInsuranceRate() {
-        int recipientAge = Sale.getInstance().getRecipient().getAge();
+        int recipientAge = sale.getRecipient().getAge();
 
         double rate = 0.0;
         int payIndex = 0;
@@ -86,4 +77,5 @@ public class Forethought extends Item {
 
         return rates[payIndex][ageIndex];
     }
+
 }

@@ -2,10 +2,13 @@ package com.edmointel.bonneyfx.model;
 
 import org.joda.money.Money;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sale {
     private final static Sale instance = new Sale();
-    private Item item;
     private Recipient recipient;
+    private List<Item> itemsSold = new ArrayList<>();
     private SalesGroup salesGroup;
 
     public static Sale getInstance() {
@@ -20,8 +23,13 @@ public class Sale {
         this.recipient = recipient;
     }
 
-    public Money getComission() {
-        return item.getCommission();
+    public Money getCommission() {
+        Money total = Utils.toUSD("0.00");
+        for(Item i : itemsSold)
+        {
+            total = total.plus(i.getCommission());
+        }
+        return total;
     }
 
     @Override
@@ -30,26 +38,17 @@ public class Sale {
         String NL = System.getProperty("line.separator");
 
         result.append(this.getClass().getName() + " Object {" + NL);
-        result.append("Item: " + item + NL);
         result.append("Recipient: " + recipient + NL);
         result.append("Sales Group: " + salesGroup + NL);
-        result.append("TOTAL COMMISSION: " + getComission() + NL);
+        result.append("TOTAL COMMISSION: " + getCommission() + NL);
         result.append("}");
 
         return result.toString();
     }
 
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
-    public SalesGroup getSalesGroup() {
-        return salesGroup;
+    public void addItem(Item item)
+    {
+        itemsSold.add(item);
     }
 
     public void setSalesGroup(SalesGroup salesGroup) {

@@ -40,32 +40,13 @@ public class Recipient extends Person {
         return isDeceased;
     }
 
-    public void setDeceased(boolean deceased) {
-        isDeceased = deceased;
-    }
-
     public int getAge() {
-        if (isDeceased && dateOfDeath != null) {
+        if (isDeceased) {
             return Period.between(dateOfBirth, dateOfDeath).getYears();
         } else
             return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public LocalDate getDateOfDeath() {
-        return dateOfDeath;
-    }
-
-    public void setDateOfDeath(LocalDate dateOfDeath) {
-        this.dateOfDeath = dateOfDeath;
-    }
 
 
 }

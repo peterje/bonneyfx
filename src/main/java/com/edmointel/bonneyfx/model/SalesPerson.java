@@ -1,5 +1,9 @@
 package com.edmointel.bonneyfx.model;
 
+import org.joda.money.Money;
+
+import java.math.RoundingMode;
+
 public class SalesPerson extends Person {
     private double splitPCT;
 
@@ -20,12 +24,9 @@ public class SalesPerson extends Person {
         return result.toString();
     }
 
-    public double getSplitPCT() {
-        return splitPCT;
-    }
-
-    public void setSplitPCT(double splitPCT) {
-        this.splitPCT = splitPCT;
+    public Money getCommission()
+    {
+        return Sale.getInstance().getCommission().multipliedBy(splitPCT, RoundingMode.UP);
     }
 
 }

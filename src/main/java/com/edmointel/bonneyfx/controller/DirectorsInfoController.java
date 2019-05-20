@@ -8,8 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -21,15 +20,6 @@ import java.util.ResourceBundle;
 
 
 public class DirectorsInfoController implements Initializable {
-
-    @FXML
-    private TextField primaryName;
-
-    @FXML
-    private TextField primaryPCT;
-
-    @FXML
-    private Button switchButton;
 
     @FXML
     private HBox director0;
@@ -44,55 +34,85 @@ public class DirectorsInfoController implements Initializable {
     private HBox director3;
 
     private int lastDirectorID = 0;
-    private HBox[] directorBoxes;
+    private Alert alert;
+    private Alert alertPCT;
 
+    private List<HBox> inputBoxes = new ArrayList<>();
     private SalesPerson primaryServiceDirector;
     private ArrayList<SalesPerson> secondarySalesPeople;
 
+    public double getSplit(HBox root) {
+        return Double.parseDouble(((TextField) (root.getChildren().get(1))).getText());
+    }
+
+    public String getName(HBox root) {
+        return ((TextField) (root.getChildren().get(0))).getText();
+    }
+
+
+    public boolean isValidPCT() {
+        double sum = 0.0;
+        for (HBox h : inputBoxes) {
+            if (!h.isDisabled())
+                sum += getSplit(h);
+        }
+        if (sum != 100.0)
+            return false;
+        return true;
+    }
+
+    public boolean validInput() {
+        for (HBox h : inputBoxes) {
+            if (!h.isDisabled()) {
+                {
+                    if(getName(h).trim().isEmpty())
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public void addDirector(ActionEvent event) {
-        // todo fix double click big
         if (lastDirectorID < 3) {
-            directorBoxes[lastDirectorID].setDisable(false);
-            if (lastDirectorID < 2)
-                lastDirectorID++;
+            lastDirectorID++;
+            inputBoxes.get(lastDirectorID).setDisable(false);
         }
     }
 
     public void removeDirector(ActionEvent event) {
-        if (lastDirectorID >= 0) {
-            directorBoxes[lastDirectorID].setDisable(true);
-            ((TextField) (directorBoxes[lastDirectorID].getChildren().get(0))).clear();
-            ((TextField) (directorBoxes[lastDirectorID].getChildren().get(1))).clear();
-            if (lastDirectorID > 0)
-                lastDirectorID--;
+        if (lastDirectorID > 0) {
+            HBox root = inputBoxes.get(lastDirectorID);
+            root.setDisable(true);
+            ((TextField) (root.getChildren().get(0))).clear();
+            ((TextField) (root.getChildren().get(1))).clear();
+            lastDirectorID--;
         }
     }
 
     public void switchScene(ActionEvent event) throws IOException {
-        //TODO Validate user input
-
-        // construct the primary director
-        try {
-            primaryServiceDirector = new SalesPerson(primaryName.getText(), Double.parseDouble(primaryPCT.getText()));
-        } catch (NumberFormatException e) {
-            System.err.println("Not a valid split");
+        if (!validInput()) {
+            alert.showAndWait().filter(response -> response == ButtonType.OK);
+            return;
         }
+        if (!isValidPCT()) {
+            alertPCT.showAndWait().filter(response -> response == ButtonType.OK);
+            return;
+        }
+
+        // construct primary FSD
+        HBox primaryBox = inputBoxes.get(0);
+        primaryServiceDirector = new SalesPerson(getName(primaryBox), getSplit(primaryBox));
 
         // construct secondary director list
         secondarySalesPeople = new ArrayList<SalesPerson>();
-        List<String> directorInfo;
-        HBox directorRow;
-        for (int i = 0; i < lastDirectorID; i++) {
-            directorRow = directorBoxes[i];
-            directorInfo = new ArrayList<String>();
-            for (Node node : directorRow.getChildren()) {
-                if (node instanceof TextField)
-                    directorInfo.add(((TextField) node).getText());
+        for (int i = 1; i < inputBoxes.size(); i++) // exclude first box, primary fsd
+        {
+            HBox root = inputBoxes.get(i);
+            if (!root.isDisabled()) {
+                secondarySalesPeople.add(new SalesPerson(getName(root), getSplit(root)));
             }
-            // create new sales rep with name string and sales pct
-            secondarySalesPeople.add(new SalesPerson(directorInfo.get(0), Double.parseDouble(directorInfo.get(1))));
         }
-
         // add sales group to sale
         Sale.getInstance().setSalesGroup(new SalesGroup(primaryServiceDirector, secondarySalesPeople));
 
@@ -104,10 +124,13 @@ public class DirectorsInfoController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
-        directorBoxes = new HBox[3];
-        directorBoxes[0] = director1;
-        directorBoxes[1] = director2;
-        directorBoxes[2] = director3;
+        alert = new Alert(Alert.AlertType.WARNING, "There are unfilled fields");
+        alertPCT = new Alert(Alert.AlertType.WARNING, "Splits do not add to 100%");
+
+        inputBoxes.add(director0);
+        inputBoxes.add(director1);
+        inputBoxes.add(director2);
+        inputBoxes.add(director3);
 
         director1.setDisable(true);
         director2.setDisable(true);

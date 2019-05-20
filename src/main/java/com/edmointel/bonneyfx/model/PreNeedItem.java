@@ -8,8 +8,8 @@ public class PreNeedItem extends Item {
     private PlotCode plotCode;
 
 
-    public PreNeedItem(String product, Money boardValue, Money downPayment, LeadCode leadCode, PlotCode plotCode) {
-        super(product, boardValue);
+    public PreNeedItem(Product product, Money boardValue, Sale sale, Money downPayment, LeadCode leadCode, PlotCode plotCode) {
+        super(product, boardValue, sale);
         this.downPayment = downPayment;
         this.leadCode = leadCode;
         this.plotCode = plotCode;
@@ -34,15 +34,14 @@ public class PreNeedItem extends Item {
     @Override
     public double getCommissionRate() {
         double rate = 0.0;
-
-        if (getProduct().equals("Property"))
+        if (getProduct().equals(Product.PROPERTY))
             if (plotCode.isCremation())
                 rate = 0.19;
             else
                 rate = 0.15;
-        else if (getProduct().equals("Merchandise"))
+        else if (getProduct().equals(Product.MERCHANDISE))
             rate = 0.08;
-        else if (getProduct().equals("Interment"))
+        else if (getProduct().equals(Product.INTERMENT))
             rate = 0.03;
 
         if (leadCode.isCompany()) // assume personal lead
@@ -64,21 +63,5 @@ public class PreNeedItem extends Item {
         else
             return Utils.toUSD("0.00");
 
-    }
-
-    public LeadCode getLeadCode() {
-        return leadCode;
-    }
-
-    public void setLeadCode(LeadCode leadCode) {
-        this.leadCode = leadCode;
-    }
-
-    public Money getDownPayment() {
-        return downPayment;
-    }
-
-    public void setDownPayment(Money downPayment) {
-        this.downPayment = downPayment;
     }
 }

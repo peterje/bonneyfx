@@ -5,11 +5,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.joda.money.Money;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -21,7 +26,7 @@ public class ProductInfoController implements Initializable {
     private ComboBox<PlotCode> plotCodeSelect;
 
     @FXML
-    private ComboBox<String> productSelect;
+    private ComboBox<Product> productSelect;
 
     @FXML
     private ComboBox<Integer> planSelect;
@@ -41,12 +46,16 @@ public class ProductInfoController implements Initializable {
     @FXML
     private Button submitButton;
 
+    @FXML
+    private Button addItemBtn;
+
+
     private Alert alert;
     private List<Node> inputNodes;
-    private List<String> forethoughProducts;
+    private List<Product> forethoughProducts;
     private boolean atNeedSale;
 
-    public boolean isForethought(String product) {
+    public boolean isForethought(Product product) {
         return forethoughProducts.contains(product);
     }
 
@@ -65,6 +74,7 @@ public class ProductInfoController implements Initializable {
             }
         }
         return true;
+
     }
 
     public void resetComboBox(ComboBox cb) {
@@ -72,7 +82,22 @@ public class ProductInfoController implements Initializable {
         cb.setValue(null);
     }
 
-    public void enableFields(String product) {
+    public void addItem(ActionEvent e) throws IOException
+    {
+        if (!validInput()) {
+            alert.showAndWait().filter(response -> response == ButtonType.OK);
+            return;
+        }
+        submit(e); // build item and add to sale
+
+        Parent p = FXMLLoader.load(getClass().getClassLoader().getResource("view/productInfo.fxml"));
+        Scene scene = new Scene(p);
+        Stage window = (Stage) (((Node) e.getSource()).getScene().getWindow());
+        window.setScene(scene);
+
+    }
+
+    public void enableFields(Product product) {
         boardValueField.clear();
         faceAmount.clear();
         downPaymentField.clear();
@@ -90,25 +115,20 @@ public class ProductInfoController implements Initializable {
             planSelect.setDisable(true);
         }
 
-        if (product.equals("Property"))
+        if (product.equals(Product.PROPERTY))
             plotCodeSelect.setDisable(false);
         else
             plotCodeSelect.setDisable(true);
     }
 
     public void updateProduct(ActionEvent event) {
-        String product = (String) ((ComboBox) event.getSource()).getValue();
-        enableFields(product);
+        enableFields(productSelect.getValue());
     }
 
     public void submit(ActionEvent e) {
-        if (!validInput()) {
-            alert.showAndWait().filter(response -> response == ButtonType.OK);
-            return;
-        }
 
         Item item = null;
-        String product = productSelect.getValue();
+        Product product = productSelect.getValue();
         PlotCode plotCode = plotCodeSelect.getValue();
         LeadCode leadCode = leadCodeSelect.getValue();
         Money boardValue;
@@ -117,20 +137,18 @@ public class ProductInfoController implements Initializable {
         // add item to sale
         if (atNeedSale) { // at need
             boardValue = Utils.toUSD(boardValueField.getText());
-            item = new AtNeedItem(product, boardValue, plotCode);
+            item = new AtNeedItem(product, boardValue,Sale.getInstance(), plotCode);
         } else if (isForethought(product)) { // forethough
             int payPlan = planSelect.getValue();
             boardValue = Utils.toUSD(faceAmount.getText());
-            item = new Forethought(product, boardValue, payPlan);
+            item = new Forethought(product, boardValue, Sale.getInstance(), payPlan);
         } else { // pre need
             downPayment = Utils.toUSD(downPaymentField.getText());
             boardValue = Utils.toUSD(boardValueField.getText());
-            item = new PreNeedItem(product, boardValue, downPayment, leadCode, plotCode);
+            item = new PreNeedItem(product, boardValue, Sale.getInstance(), downPayment, leadCode, plotCode);
         }
-        Sale.getInstance().setItem(item);
+        Sale.getInstance().addItem(item);
         System.out.println(Sale.getInstance());
-        System.out.println(Sale.getInstance().getItem().getCommissionRate());
-
 
     }
 
@@ -147,29 +165,26 @@ public class ProductInfoController implements Initializable {
         inputNodes.add(downPaymentField);
 
 
-        forethoughProducts = new ArrayList<String>();
-        forethoughProducts.add("Insurance");
-        forethoughProducts.add("Trust");
-        forethoughProducts.add("Travel");
+        forethoughProducts = new ArrayList<Product>();
+        forethoughProducts.add(Product.INSURANCE);
+        forethoughProducts.add(Product.TRUST);
+        forethoughProducts.add(Product.TRAVEL);
 
         EnumSet<PlotCode> plotCodesSet = EnumSet.allOf(PlotCode.class);
         ObservableList<PlotCode> plotCodesList = FXCollections.observableArrayList();
         plotCodesList.addAll(plotCodesSet);
 
-        ObservableList<String> products = FXCollections.observableArrayList(
-                "Merchandise",
-                "Property",
-                "Interment",
-                "Insurance",
-                "Trust",
-                "Travel");
+        EnumSet<Product> products = EnumSet.allOf(Product.class);
+        ObservableList<Product> productsList = FXCollections.observableArrayList();
+        productsList.addAll(products);
 
         ObservableList<LeadCode> leadCodes = FXCollections.observableArrayList();
         EnumSet<LeadCode> leadCodeSet = EnumSet.allOf(LeadCode.class);
         leadCodes.addAll(leadCodeSet);
 
         ObservableList<Integer> payPlans = FXCollections.observableArrayList(1, 3, 5, 7, 10);
-        productSelect.setItems(products);
+
+        productSelect.setItems(productsList);
         planSelect.setItems(payPlans);
         plotCodeSelect.setItems(plotCodesList);
         planSelect.setDisable(true);
@@ -185,7 +200,6 @@ public class ProductInfoController implements Initializable {
             leadCodeSelect.setDisable(true);
         }
 
-
-        enableFields("Merchandise");
+        enableFields(Product.MERCHANDISE);
     }
 }

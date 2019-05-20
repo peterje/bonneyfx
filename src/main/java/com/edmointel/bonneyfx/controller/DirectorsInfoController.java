@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -41,8 +42,10 @@ public class DirectorsInfoController implements Initializable {
     private SalesPerson primaryServiceDirector;
     private ArrayList<SalesPerson> secondarySalesPeople;
 
-    public double getSplit(HBox root) {
-        return Double.parseDouble(((TextField) (root.getChildren().get(1))).getText());
+    public String getSplit(HBox root)
+    {
+        return ((TextField) (root.getChildren().get(1))).getText();
+
     }
 
     public String getName(HBox root) {
@@ -54,7 +57,7 @@ public class DirectorsInfoController implements Initializable {
         double sum = 0.0;
         for (HBox h : inputBoxes) {
             if (!h.isDisabled())
-                sum += getSplit(h);
+                sum += Double.parseDouble(getSplit(h));
         }
         if (sum != 100.0)
             return false;
@@ -65,8 +68,11 @@ public class DirectorsInfoController implements Initializable {
         for (HBox h : inputBoxes) {
             if (!h.isDisabled()) {
                 {
-                    if(getName(h).trim().isEmpty())
+                    if(getName(h).trim().isEmpty() || getSplit(h).trim().isEmpty());
+                    {
                         return false;
+                    }
+                    
                 }
             }
         }
@@ -92,17 +98,22 @@ public class DirectorsInfoController implements Initializable {
 
     public void switchScene(ActionEvent event) throws IOException {
         if (!validInput()) {
-            alert.showAndWait().filter(response -> response == ButtonType.OK);
-            return;
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                return;
+            }
         }
+        
         if (!isValidPCT()) {
-            alertPCT.showAndWait().filter(response -> response == ButtonType.OK);
-            return;
+            Optional<ButtonType> result = alertPCT.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                return;
+            }
         }
 
         // construct primary FSD
         HBox primaryBox = inputBoxes.get(0);
-        primaryServiceDirector = new SalesPerson(getName(primaryBox), getSplit(primaryBox));
+        primaryServiceDirector = new SalesPerson(getName(primaryBox), Double.parseDouble(getSplit(primaryBox)));
 
         // construct secondary director list
         secondarySalesPeople = new ArrayList<SalesPerson>();
@@ -110,7 +121,7 @@ public class DirectorsInfoController implements Initializable {
         {
             HBox root = inputBoxes.get(i);
             if (!root.isDisabled()) {
-                secondarySalesPeople.add(new SalesPerson(getName(root), getSplit(root)));
+                secondarySalesPeople.add(new SalesPerson(getName(root), Double.parseDouble(getSplit(root))));
             }
         }
         // add sales group to sale

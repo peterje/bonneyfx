@@ -11,7 +11,7 @@
             <children>
                 <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0">
                     <children>
-                        <Label alignment="CENTER" text="Recipient Info">
+                        <Label alignment="CENTER" text="Purchaser Info">
                             <font>
                                 <Font name="System Bold" size="20.0"/>
                             </font>
@@ -20,16 +20,16 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <TextField fx:id="recipientName" promptText="Name">
+                         <TextField fx:id="purchaserName" promptText="Purchaser Name">
                             <HBox.margin>
                                 <Insets left="10.0" right="10.0"/>
                             </HBox.margin>
                         </TextField>
-                        <DatePicker fx:id="dateOfBirth" promptText="Date of Birth">
+                        <TextField fx:id="recipientName" promptText="Recipient Name">
                             <HBox.margin>
                                 <Insets left="10.0" right="10.0"/>
                             </HBox.margin>
-                        </DatePicker>
+                        </TextField>
                     </children>
                     <opaqueInsets>
                         <Insets/>
@@ -40,6 +40,11 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
+                         <DatePicker fx:id="dateOfBirth" promptText="Date of Birth">
+                            <HBox.margin>
+                                <Insets left="10.0" right="10.0"/>
+                            </HBox.margin>
+                        </DatePicker>
                         <ToggleButton fx:id="isDeceased" mnemonicParsing="false" text="Deceased">
                             <HBox.margin>
                                 <Insets left="10.0" right="10.0"/>

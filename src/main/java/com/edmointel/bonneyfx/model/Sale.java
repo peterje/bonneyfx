@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Sale {
     private final static Sale instance = new Sale();
+    private Person purchaser;
     private Recipient recipient;
     private List<Item> itemsSold = new ArrayList<>();
     private SalesGroup salesGroup;
@@ -22,6 +23,18 @@ public class Sale {
     public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
     }
+    
+    public Person getPurchaser()
+    {
+    	return purchaser;
+    }
+    
+    
+    public void setPurchaser(Person p)
+    {
+    	this.purchaser = p;
+    }
+
 
     public Money getCommission() {
         Money total = Utils.toUSD("0.00");

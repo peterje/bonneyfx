@@ -19,6 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ProductInfoController implements Initializable {
@@ -85,7 +86,9 @@ public class ProductInfoController implements Initializable {
     public void addItem(ActionEvent e) throws IOException
     {
         if (!validInput()) {
-            alert.showAndWait().filter(response -> response == ButtonType.OK);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+            }
             return;
         }
         submit(e); // build item and add to sale

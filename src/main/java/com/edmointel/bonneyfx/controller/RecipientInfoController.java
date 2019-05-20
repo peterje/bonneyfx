@@ -18,6 +18,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RecipientInfoController implements Initializable {
@@ -31,6 +32,8 @@ public class RecipientInfoController implements Initializable {
     private TextField recipientName;
     @FXML
     private DatePicker dateOfBirth;
+    @FXML 
+    private TextField purchaserName;
 
     private Alert alert;
     private List<Node> inputNodes;
@@ -54,7 +57,9 @@ public class RecipientInfoController implements Initializable {
 
     public void switchScene(ActionEvent event) throws IOException {
         if (!validInput()) {
-            alert.showAndWait().filter(response -> response == ButtonType.OK);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+            }
             return;
         }
 
@@ -64,6 +69,7 @@ public class RecipientInfoController implements Initializable {
         LocalDate dod = dateOfDeath.getValue();
         boolean deceased = isDeceased.isSelected();
         Sale.getInstance().setRecipient(new Recipient(name, deceased, dob, dod));
+        Sale.getInstance().setPurchaser(new Person(purchaserName.getText()));
 
         // switch to product info page
         Parent p = FXMLLoader.load(getClass().getClassLoader().getResource("view/productInfo.fxml"));
@@ -76,6 +82,7 @@ public class RecipientInfoController implements Initializable {
         alert = new Alert(Alert.AlertType.WARNING, "There are unfilled fields");
         inputNodes = new ArrayList<Node>();
 
+        inputNodes.add(purchaserName);
         inputNodes.add(dateOfBirth);
         inputNodes.add(dateOfDeath);
         inputNodes.add(recipientName);

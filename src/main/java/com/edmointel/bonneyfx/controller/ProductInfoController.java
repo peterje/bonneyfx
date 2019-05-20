@@ -155,7 +155,7 @@ public class ProductInfoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         alert = new Alert(Alert.AlertType.WARNING, "There are unfilled fields");
 
-        inputNodes = new ArrayList<Node>();
+        inputNodes = new ArrayList<>();
         inputNodes.add(productSelect);
         inputNodes.add(planSelect);
         inputNodes.add(leadCodeSelect);
@@ -182,7 +182,7 @@ public class ProductInfoController implements Initializable {
         EnumSet<LeadCode> leadCodeSet = EnumSet.allOf(LeadCode.class);
         leadCodes.addAll(leadCodeSet);
 
-        ObservableList<Integer> payPlans = FXCollections.observableArrayList(1, 3, 5, 7, 10);
+        ObservableList<Integer> payPlans = FXCollections.observableArrayList(1, 2, 3, 5, 8, 10);
 
         productSelect.setItems(productsList);
         planSelect.setItems(payPlans);

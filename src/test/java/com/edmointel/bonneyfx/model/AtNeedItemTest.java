@@ -1,13 +1,12 @@
 package com.edmointel.bonneyfx.model;
 
+import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AtNeedItemTest {
     AtNeedItem plotCremationPostYear;
@@ -17,19 +16,20 @@ public class AtNeedItemTest {
     AtNeedItem merchandisePreYear;
     AtNeedItem merchandisePostYear;
     AtNeedItem interment;
+
     @Before
     public void setUp() throws Exception {
 
-        Recipient recipientPostOneYear = Mockito.mock(Recipient.class);
+        final Recipient recipientPostOneYear = Mockito.mock(Recipient.class);
         Mockito.when(recipientPostOneYear.diedOverOneYearAgo()).thenReturn(true);
 
-        Recipient recipientPreOneYear = Mockito.mock(Recipient.class);
+        final Recipient recipientPreOneYear = Mockito.mock(Recipient.class);
         Mockito.when(recipientPreOneYear.diedOverOneYearAgo()).thenReturn(false);
 
-        Sale salePostOneYear = Mockito.mock(Sale.class);
+        final Sale salePostOneYear = Mockito.mock(Sale.class);
         Mockito.when(salePostOneYear.getRecipient()).thenReturn(recipientPostOneYear);
 
-        Sale salePreOneYear = Mockito.mock(Sale.class);
+        final Sale salePreOneYear = Mockito.mock(Sale.class);
         Mockito.when(salePreOneYear.getRecipient()).thenReturn(recipientPreOneYear);
 
 
@@ -47,19 +47,78 @@ public class AtNeedItemTest {
     }
 
     @Test
-    public void getCommissionRate() {
-        assertEquals(plotCremationPostYear.getCommissionRate(), 0.19, 0.0);
-        assertEquals(plotCremationPreYear.getCommissionRate(), 0.19, 0.0);
-        assertEquals(plotGroundPostYear.getCommissionRate(), 0.15, 0.0);
-        assertEquals(plotGroundPreYear.getCommissionRate(), 0.08, 0.0);
-        assertEquals(merchandisePostYear.getCommissionRate(), 0.05, 0.0);
-        assertEquals(merchandisePreYear.getCommissionRate(), 0.05, 0.0);
-        assertEquals(interment.getCommissionRate(), 0.0, 0.0);
+    public void getCommissionRate1() {
+        assertEquals(0.19, plotCremationPostYear.getCommissionRate(), 0.001);
     }
 
     @Test
-    public void getFlatCommission()
-    {
-
+    public void getCommissionRate2() {
+        assertEquals(0.19, plotCremationPreYear.getCommissionRate(), 0.001);
     }
+
+    @Test
+    public void getCommissionRate3() {
+        assertEquals(0.15, plotGroundPostYear.getCommissionRate(), 0.001);
+    }
+
+    @Test
+    public void getCommissionRate4() {
+        assertEquals(0.08, plotGroundPreYear.getCommissionRate(), 0.001);
+    }
+
+    @Test
+    public void getCommissionRate5() {
+        assertEquals(0.05, merchandisePostYear.getCommissionRate(), 0.001);
+    }
+
+    @Test
+    public void getCommissionRate6() {
+        assertEquals(0.05, merchandisePreYear.getCommissionRate(), 0.001);
+    }
+
+    @Test
+    public void getCommissionRate7() {
+        assertEquals(0.0, interment.getCommissionRate(), 0.001);
+    }
+
+
+    @Test
+    public void getFlatCommission() {
+    }
+
+    @Test
+    public void getFlatCommission1() {
+        assertEquals(Money.zero(CurrencyUnit.USD), plotCremationPostYear.getFlatCommission());
+    }
+
+    @Test
+    public void getFlatCommission2() {
+        assertEquals(Money.zero(CurrencyUnit.USD), plotCremationPreYear.getFlatCommission());
+    }
+
+    @Test
+    public void getFlatCommission3() {
+        assertEquals(Money.zero(CurrencyUnit.USD), plotGroundPostYear.getFlatCommission());
+    }
+
+    @Test
+    public void getFlatCommission4() {
+        assertEquals(Money.zero(CurrencyUnit.USD), plotGroundPreYear.getFlatCommission());
+    }
+
+    @Test
+    public void getFlatCommission5() {
+        assertEquals(Money.zero(CurrencyUnit.USD), merchandisePostYear.getFlatCommission());
+    }
+
+    @Test
+    public void getFlatCommission6() {
+        assertEquals(Money.zero(CurrencyUnit.USD), merchandisePreYear.getFlatCommission());
+    }
+
+    @Test
+    public void getFlatCommission7() {
+        assertEquals(Money.zero(CurrencyUnit.USD), interment.getFlatCommission());
+    }
+
 }

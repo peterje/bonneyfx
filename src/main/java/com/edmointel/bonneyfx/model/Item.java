@@ -6,9 +6,9 @@ import java.math.RoundingMode;
 
 public abstract class Item {
 
-    private Money boardValue;
-    private Product product;
-    public Sale sale;
+    protected Money boardValue;
+    protected Product product;
+    protected Sale sale;
 
     public Item(Product product, Money boardValue, Sale sale) {
         this.boardValue = boardValue;

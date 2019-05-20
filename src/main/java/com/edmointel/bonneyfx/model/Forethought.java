@@ -28,7 +28,6 @@ public class Forethought extends Item {
     @Override
     public double getCommissionRate() {
         double rate = 0.0;
-        Product product = getProduct();
         if (product.equals(Product.INSURANCE))
             rate = getInsuranceRate();
         else if (product.equals(Product.TRUST))
@@ -41,7 +40,7 @@ public class Forethought extends Item {
     @Override
     public Money getFlatCommission() {
 
-        if (getProduct().equals(Product.TRAVEL))
+        if (product.equals(Product.TRAVEL))
             return Utils.toUSD("85.00");
         else
             return Utils.toUSD("0.00");
@@ -50,7 +49,6 @@ public class Forethought extends Item {
     private double getInsuranceRate() {
         int recipientAge = sale.getRecipient().getAge();
 
-        double rate = 0.0;
         int payIndex = 0;
         int ageIndex;
         double[][] rates = {
@@ -61,9 +59,9 @@ public class Forethought extends Item {
 
         if (payPlan == 1)
             payIndex = 0;
-        else if (payPlan > 1 && payPlan <= 5)
+        else if (payPlan == 2 || payPlan == 3 || payPlan == 5)
             payIndex = 1;
-        else if (payPlan > 5 && payPlan <= 10)
+        else if (payPlan == 8 || payPlan == 10)
             payIndex = 2;
 
         if (recipientAge <= 70)

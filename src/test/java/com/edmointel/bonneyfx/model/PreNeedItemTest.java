@@ -37,8 +37,6 @@ public class PreNeedItemTest {
         LeadCode company = LeadCode.COMPANY;
         LeadCode personal = LeadCode.PERSONAL;
 
-        Money zero = Utils.toUSD("0.00");
-
         cremationPropertyCompanyFullPay = new PreNeedItem(Product.PROPERTY,Utils.toUSD("100.0"),sale, Utils.toUSD("100"), company, cremation);
         cremationPropertyPersonalFullPay = new PreNeedItem(Product.PROPERTY,Utils.toUSD("100.0"),sale, Utils.toUSD("100"), personal, cremation);
         groundPropertyCompanyFullPay = new PreNeedItem(Product.PROPERTY,Utils.toUSD("100.0"),sale, Utils.toUSD("100"), company, ground);
@@ -60,43 +58,43 @@ public class PreNeedItemTest {
     }
 
     @Test
-    public void getCommissionRate() {
-        assertEquals(cremationPropertyCompanyFullPay.getCommissionRate(), 0.19, 0.001);
-        assertEquals(cremationPropertyCompany.getCommissionRate(), 0.18, 0.0);
-        assertEquals(cremationPropertyPersonal.getCommissionRate(), 0.19, 0.0);
-        assertEquals(cremationPropertyPersonalFullPay.getCommissionRate(), 0.20, 0.001);
-        assertEquals(groundPropertyPersonal.getCommissionRate(), 0.15, 0.001);
-        assertEquals(groundPropertyCompany.getCommissionRate(), 0.14, 0.001);
-        assertEquals(groundPropertyCompanyFullPay.getCommissionRate(), 0.15, 0.001);
-        assertEquals(groundPropertyPersonalFullPay.getCommissionRate(), 0.16, 0.001);
-        assertEquals(merchandisePersonal.getCommissionRate(), 0.08, 0.001);
-        assertEquals(merchandiseCompany.getCommissionRate(), 0.07, 0.001);
-        assertEquals(merchandiseCompanyFullPay.getCommissionRate(), 0.08, 0.001);
-        assertEquals(merchandisePersonalFullPay.getCommissionRate(), 0.09, 0.001);
-        assertEquals(intermentCompany.getCommissionRate(), 0.02, 0.001);
-        assertEquals(intermentPersonal.getCommissionRate(), 0.03, 0.001);
-        assertEquals(intermentCompanyFullPay.getCommissionRate(), 0.03, 0.001);
-        assertEquals(intermentPersonalFullPay.getCommissionRate(), 0.04, 0.001);
+    public void getCommissionRateCompanyFullPay() {
+        assertEquals(0.19,cremationPropertyCompanyFullPay.getCommissionRate(), 0.001);
+        assertEquals(0.18,cremationPropertyCompany.getCommissionRate(), 0.001);
+        assertEquals(0.19,cremationPropertyPersonal.getCommissionRate(),  0.001);
+        assertEquals(0.20,cremationPropertyPersonalFullPay.getCommissionRate(), 0.001);
+        assertEquals(0.15,groundPropertyPersonal.getCommissionRate(), 0.001);
+        assertEquals(0.14,groundPropertyCompany.getCommissionRate(), 0.001);
+        assertEquals(0.15,groundPropertyCompanyFullPay.getCommissionRate(), 0.001);
+        assertEquals(0.16,groundPropertyPersonalFullPay.getCommissionRate(), 0.001);
+        assertEquals(0.08,merchandisePersonal.getCommissionRate(), 0.001);
+        assertEquals(0.07,merchandiseCompany.getCommissionRate(), 0.001);
+        assertEquals(0.08,merchandiseCompanyFullPay.getCommissionRate(), 0.001);
+        assertEquals(0.09,merchandisePersonalFullPay.getCommissionRate(), 0.001);
+        assertEquals(0.02,intermentCompany.getCommissionRate(), 0.001);
+        assertEquals(0.03,intermentPersonal.getCommissionRate(), 0.001);
+        assertEquals(0.03,intermentCompanyFullPay.getCommissionRate(), 0.001);
+        assertEquals(0.04,intermentPersonalFullPay.getCommissionRate(), 0.001);
     }
 
     @Test
     public void getFlatCommission() {
-        assertEquals(cremationPropertyCompanyFullPay.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(cremationPropertyCompany.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(cremationPropertyPersonal.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(cremationPropertyPersonalFullPay.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(groundPropertyPersonal.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(groundPropertyCompany.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(groundPropertyCompanyFullPay.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(groundPropertyPersonalFullPay.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(merchandisePersonal.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(merchandiseCompany.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(merchandiseCompanyFullPay.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(merchandisePersonalFullPay.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(intermentCompany.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(intermentPersonal.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(intermentCompanyFullPay.getFlatCommission(), Money.zero(CurrencyUnit.USD));
-        assertEquals(intermentPersonalFullPay.getFlatCommission(), Money.zero(CurrencyUnit.USD));
+        assertEquals(Money.zero(CurrencyUnit.USD), cremationPropertyCompanyFullPay.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), cremationPropertyCompany.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), cremationPropertyPersonal.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), cremationPropertyPersonalFullPay.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), groundPropertyPersonal.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), groundPropertyCompany.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), groundPropertyCompanyFullPay.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), groundPropertyPersonalFullPay.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), merchandisePersonal.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), merchandiseCompany.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), merchandiseCompanyFullPay.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), merchandisePersonalFullPay.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), intermentCompany.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), intermentPersonal.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), intermentCompanyFullPay.getFlatCommission());
+        assertEquals(Money.zero(CurrencyUnit.USD), intermentPersonalFullPay.getFlatCommission());
     }
 
     @Test

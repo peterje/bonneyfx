@@ -28,7 +28,7 @@ public class AtNeedItem extends Item {
     public double getCommissionRate() {
         Recipient recipient = sale.getRecipient();
         double rate = 0.0;
-        if (getProduct().equals(Product.PROPERTY)) {
+        if (product.equals(Product.PROPERTY)) {
             if (plotCode.isCremation())
                 rate = 0.19;
             else // non cremation
@@ -36,9 +36,9 @@ public class AtNeedItem extends Item {
                     rate = 0.15;
                 else
                     rate = 0.08;
-        } else if (getProduct().equals(Product.MERCHANDISE))
+        } else if (product.equals(Product.MERCHANDISE))
             rate = 0.05;
-        else if (getProduct().equals(Product.INTERMENT))
+        else if (product.equals(Product.INTERMENT))
             rate = 0.0;
         return rate;
     }

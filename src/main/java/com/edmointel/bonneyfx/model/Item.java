@@ -21,15 +21,7 @@ public abstract class Item {
     public abstract Money getFlatCommission();
 
     public Money getCommission() {
-        return getBoardValue().multipliedBy(getCommissionRate(), RoundingMode.UP).plus(getFlatCommission());
-    }
-
-    public Money getBoardValue() {
-        return boardValue;
-    }
-
-    public Product getProduct() {
-        return product;
+        return boardValue.multipliedBy(getCommissionRate(), RoundingMode.HALF_EVEN).plus(getFlatCommission());
     }
 
 }

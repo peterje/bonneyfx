@@ -6,9 +6,11 @@ import java.math.RoundingMode;
 
 public class SalesPerson extends Person {
     private double splitPCT;
+    private Sale sale;
 
-    public SalesPerson(String name, double splitPCT) {
+    public SalesPerson(String name, Sale sale, double splitPCT) {
         super(name);
+        this.sale = sale;
         this.splitPCT = splitPCT;
     }
 
@@ -26,7 +28,7 @@ public class SalesPerson extends Person {
 
     public Money getCommission()
     {
-        return Sale.getInstance().getCommission().multipliedBy(splitPCT, RoundingMode.UP);
+        return sale.getCommission().multipliedBy(splitPCT, RoundingMode.HALF_EVEN);
     }
 
 }

@@ -17,8 +17,8 @@ public class Forethought extends Item {
         String NL = System.getProperty("line.separator");
 
         result.append(this.getClass().getName() + "Object {" + NL);
-        result.append("Product: " + getProduct() + NL);
-        result.append("Face Amount: " + getBoardValue() + NL);
+        result.append("Product: " + product + NL);
+        result.append("Face Amount: " + boardValue + NL);
         result.append("Payment Plan: " + payPlan + " years" + NL);
         result.append("}");
 

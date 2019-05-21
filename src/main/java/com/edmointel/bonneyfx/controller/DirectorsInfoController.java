@@ -1,6 +1,8 @@
 package com.edmointel.bonneyfx.controller;
 
-import com.edmointel.bonneyfx.model.*;
+import com.edmointel.bonneyfx.model.Sale;
+import com.edmointel.bonneyfx.model.SalesGroup;
+import com.edmointel.bonneyfx.model.SalesPerson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -44,38 +48,37 @@ public class DirectorsInfoController implements Initializable {
 
     public String getSplit(HBox root)
     {
-        return ((TextField) (root.getChildren().get(1))).getText();
+        TextField split = ((TextField) (root.getChildren().get(1)));
+        if (split.getText().trim().isEmpty() || ((TextField) (root.getChildren().get(1))).getText() == null)
+            return null;
+        else
+            return ((TextField) (root.getChildren().get(1))).getText();
 
     }
 
     public String getName(HBox root) {
-        return ((TextField) (root.getChildren().get(0))).getText();
+        TextField name = ((TextField) (root.getChildren().get(0)));
+        if (name.getText().trim().isEmpty() || ((TextField) (root.getChildren().get(0))).getText() == null)
+            return null;
+        else
+            return ((TextField) (root.getChildren().get(0))).getText();
     }
 
 
     public boolean isValidPCT() {
         double sum = 0.0;
-        for (HBox h : inputBoxes) {
+        for (HBox h : inputBoxes)
             if (!h.isDisabled())
                 sum += Double.parseDouble(getSplit(h));
-        }
         if (sum != 100.0)
             return false;
         return true;
     }
 
     public boolean validInput() {
-        for (HBox h : inputBoxes) {
-            if (!h.isDisabled()) {
-                {
-                    if(getName(h).trim().isEmpty() || getSplit(h).trim().isEmpty());
-                    {
-                        return false;
-                    }
-                    
-                }
-            }
-        }
+        for (HBox h : inputBoxes)
+            if (!h.isDisabled() && (getName(h) == null || getSplit(h) == null))
+                return false;
         return true;
     }
 
@@ -98,6 +101,7 @@ public class DirectorsInfoController implements Initializable {
 
     public void switchScene(ActionEvent event) throws IOException {
         if (!validInput()) {
+            System.out.println("invalid");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 return;
@@ -113,7 +117,7 @@ public class DirectorsInfoController implements Initializable {
 
         // construct primary FSD
         HBox primaryBox = inputBoxes.get(0);
-        primaryServiceDirector = new SalesPerson(getName(primaryBox), Double.parseDouble(getSplit(primaryBox)));
+        primaryServiceDirector = new SalesPerson(getName(primaryBox), Sale.getInstance(), Double.parseDouble(getSplit(primaryBox)));
 
         // construct secondary director list
         secondarySalesPeople = new ArrayList<SalesPerson>();
@@ -121,7 +125,7 @@ public class DirectorsInfoController implements Initializable {
         {
             HBox root = inputBoxes.get(i);
             if (!root.isDisabled()) {
-                secondarySalesPeople.add(new SalesPerson(getName(root), Double.parseDouble(getSplit(root))));
+                secondarySalesPeople.add(new SalesPerson(getName(root), Sale.getInstance(), Double.parseDouble(getSplit(root))));
             }
         }
         // add sales group to sale

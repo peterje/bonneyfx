@@ -15,11 +15,6 @@ public class Person {
         return result.toString();
     }
 
-
-    public String getName()
-    {
-        return this.name;
-    }
     public Person(String name) {
         this.name = name;
     }

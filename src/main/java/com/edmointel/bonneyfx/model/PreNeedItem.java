@@ -21,8 +21,8 @@ public class PreNeedItem extends Item {
         String NL = System.getProperty("line.separator");
 
         result.append(this.getClass().getName() + "Object {" + NL);
-        result.append("Product: " + getProduct() + NL);
-        result.append("Value: " + getBoardValue() + NL);
+        result.append("Product: " + product + NL);
+        result.append("Value: " + boardValue + NL);
         result.append("Down Payment: " + downPayment + NL);
         result.append("LeadCode: " + leadCode + NL);
         result.append("PlotCode: " + plotCode + NL);
@@ -34,19 +34,19 @@ public class PreNeedItem extends Item {
     @Override
     public double getCommissionRate() {
         double rate = 0.0;
-        if (getProduct().equals(Product.PROPERTY))
+        if (product.equals(Product.PROPERTY))
             if (plotCode.isCremation())
                 rate = 0.19;
             else
                 rate = 0.15;
-        else if (getProduct().equals(Product.MERCHANDISE))
+        else if (product.equals(Product.MERCHANDISE))
             rate = 0.08;
-        else if (getProduct().equals(Product.INTERMENT))
+        else if (product.equals(Product.INTERMENT))
             rate = 0.03;
 
         if (leadCode.isCompany()) // assume personal lead
             rate -= 0.01;
-        if (downPayment.equals(getBoardValue())) // assume is not paid in full
+        if (downPayment.equals(boardValue)) // assume is not paid in full
             rate += 0.01;
 
         return rate;

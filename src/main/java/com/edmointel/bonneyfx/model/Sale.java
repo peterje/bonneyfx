@@ -29,7 +29,6 @@ public class Sale {
     	return purchaser;
     }
     
-    
     public void setPurchaser(Person p)
     {
     	this.purchaser = p;

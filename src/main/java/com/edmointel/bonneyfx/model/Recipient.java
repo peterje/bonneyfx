@@ -32,6 +32,14 @@ public class Recipient extends Person {
 
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public LocalDate getDateOfDeath() {
+        return dateOfDeath;
+    }
+
     public boolean diedOverOneYearAgo() {
         return Period.between(dateOfDeath, LocalDate.now()).getYears() > 1;
     }

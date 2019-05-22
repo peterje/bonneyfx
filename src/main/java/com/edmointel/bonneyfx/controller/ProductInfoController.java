@@ -1,6 +1,7 @@
 package com.edmointel.bonneyfx.controller;
 
 import com.edmointel.bonneyfx.model.*;
+import com.edmointel.bonneyfx.serializer.XMLBuilder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,11 +17,7 @@ import org.joda.money.Money;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ProductInfoController implements Initializable {
     @FXML
@@ -93,6 +90,7 @@ public class ProductInfoController implements Initializable {
         }
         submit(e); // build item and add to sale
 
+        // is this needed?
         Parent p = FXMLLoader.load(getClass().getClassLoader().getResource("view/productInfo.fxml"));
         Scene scene = new Scene(p);
         Stage window = (Stage) (((Node) e.getSource()).getScene().getWindow());
@@ -141,7 +139,7 @@ public class ProductInfoController implements Initializable {
         if (atNeedSale) { // at need
             boardValue = Utils.toUSD(boardValueField.getText());
             item = new AtNeedItem(product, boardValue,Sale.getInstance(), plotCode);
-        } else if (isForethought(product)) { // forethough
+        } else if (isForethought(product)) { // forethought
             int payPlan = planSelect.getValue();
             boardValue = Utils.toUSD(faceAmount.getText());
             item = new Forethought(product, boardValue, Sale.getInstance(), payPlan);
@@ -153,6 +151,12 @@ public class ProductInfoController implements Initializable {
         Sale.getInstance().addItem(item);
         System.out.println(Sale.getInstance());
 
+    }
+
+    public void generatePdf(ActionEvent e) throws Exception {
+        submit(e);
+        XMLBuilder xmlBuilder = new XMLBuilder();
+        xmlBuilder.generate();
     }
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -205,4 +209,6 @@ public class ProductInfoController implements Initializable {
 
         enableFields(Product.MERCHANDISE);
     }
+
+    // todo generate pdf with xmlbuilder
 }

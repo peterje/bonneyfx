@@ -1,11 +1,14 @@
 package com.edmointel.bonneyfx.model;
 
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.joda.money.Money;
 
 import java.math.RoundingMode;
 
 public class SalesPerson extends Person {
     private double splitPCT;
+
+    @XStreamOmitField
     private Sale sale;
 
     public SalesPerson(String name, Sale sale, double splitPCT) {
@@ -24,6 +27,10 @@ public class SalesPerson extends Person {
         result.append("Split%: " + splitPCT + NL);
 
         return result.toString();
+    }
+
+    public double getSplitPCT() {
+        return splitPCT;
     }
 
     public Money getCommission()

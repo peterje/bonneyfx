@@ -5,6 +5,7 @@ import org.joda.money.Money;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Sale {
     private final static Sale instance = new Sale();
     private Person purchaser;
@@ -23,7 +24,7 @@ public class Sale {
     public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
     }
-    
+
     public Person getPurchaser()
     {
     	return purchaser;
@@ -33,7 +34,6 @@ public class Sale {
     {
     	this.purchaser = p;
     }
-
 
     public Money getCommission() {
         Money total = Utils.toUSD("0.00");
@@ -65,5 +65,9 @@ public class Sale {
 
     public void setSalesGroup(SalesGroup salesGroup) {
         this.salesGroup = salesGroup;
+    }
+
+    public SalesGroup getSalesGroup() {
+        return salesGroup;
     }
 }

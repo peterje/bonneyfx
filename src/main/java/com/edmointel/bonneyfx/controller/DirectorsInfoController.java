@@ -125,7 +125,7 @@ public class DirectorsInfoController implements Initializable {
         {
             HBox root = inputBoxes.get(i);
             if (!root.isDisabled()) {
-                secondarySalesPeople.add(new SalesPerson(getName(root), Sale.getInstance(), Double.parseDouble(getSplit(root))));
+                secondarySalesPeople.add(new SalesPerson(getName(root), Sale.getInstance(), Double.parseDouble(getSplit(root)) / 100));
             }
         }
         // add sales group to sale

@@ -1,5 +1,6 @@
 package com.edmointel.bonneyfx.model;
 
+
 public class Person {
     private String name;
 
@@ -17,5 +18,9 @@ public class Person {
 
     public Person(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

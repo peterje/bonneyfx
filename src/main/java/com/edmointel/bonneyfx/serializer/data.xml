@@ -1,0 +1,29 @@
+<com.edmointel.bonneyfx.model.Sale>
+    <purchaser>
+        <name>John Doe</name>
+    </purchaser>
+    <recipient>
+        <name>Jane Doe</name>
+        <dob>1935-01-19</dob>
+        <age>84</age>
+        <dod>2019-05-01</dod>
+        <isDeceased>true</isDeceased>
+        <deceasedForOneYear>false</deceasedForOneYear>
+    </recipient>
+    <itemsSold>
+        <com.edmointel.bonneyfx.model.AtNeedItem>
+            <product>MERCHANDISE</product>
+            <boardValue>USD 1000.00</boardValue>
+            <commissionRate>0.05</commissionRate>
+            <commission>USD 50.00</commission>
+        </com.edmointel.bonneyfx.model.AtNeedItem>
+    </itemsSold>
+    <salesGroup>
+        <primaryServiceDirector>
+            <name>Peter Edmonds</name>
+            <split>100.0</split>
+            <commission>USD 5000.00</commission>
+        </primaryServiceDirector>
+        <secondaryServiceDirectors/>
+    </salesGroup>
+</com.edmointel.bonneyfx.model.Sale>

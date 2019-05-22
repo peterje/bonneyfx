@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.edmointel.bonneyfx.controller.ProductInfoController">
     <children>
         <VBox layoutX="2.0" layoutY="1.0" prefHeight="400.0" prefWidth="600.0">
@@ -79,7 +76,8 @@
                     <children>
                         <AnchorPane prefHeight="100.0" prefWidth="190.0">
                             <children>
-                                <Button fx:id="submitButton" layoutX="41.0" layoutY="38.0" mnemonicParsing="false" onAction="#submit" text="Generate PDF" />
+                                <Button fx:id="submitButton" layoutX="41.0" layoutY="38.0" mnemonicParsing="false"
+                                        onAction="#generatePdf" text="Generate PDF"/>
                             </children>
                         </AnchorPane>
                   <Button fx:id="addItemBtn" mnemonicParsing="false" onAction="#addItem" text="Add Item" />

@@ -1,6 +1,9 @@
 package com.edmointel.bonneyfx.serializer;
 
 
+import com.edmointel.bonneyfx.model.AtNeedItem;
+import com.edmointel.bonneyfx.model.Forethought;
+import com.edmointel.bonneyfx.model.PreNeedItem;
 import com.edmointel.bonneyfx.model.Sale;
 import com.thoughtworks.xstream.XStream;
 import org.apache.fop.apps.FOPException;
@@ -16,6 +19,10 @@ public class XMLBuilder {
     public void generate() throws IOException, URISyntaxException, FOPException, TransformerException {
         File xmlFile = new File("xmlFile.xml");
         XStream xStream = new XStream();
+        xStream.alias("sale", Sale.class);
+        xStream.alias("atNeed", AtNeedItem.class);
+        xStream.alias("preNeed", PreNeedItem.class);
+        xStream.alias("forethought", Forethought.class);
         xStream.registerConverter(new SalesPersonConverter());
         xStream.registerConverter(new ItemConverter());
         xStream.registerConverter(new RecipientConverter());

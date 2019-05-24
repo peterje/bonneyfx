@@ -117,7 +117,7 @@ public class DirectorsInfoController implements Initializable {
 
         // construct primary FSD
         HBox primaryBox = inputBoxes.get(0);
-        primaryServiceDirector = new SalesPerson(getName(primaryBox), Sale.getInstance(), Double.parseDouble(getSplit(primaryBox)));
+        primaryServiceDirector = new SalesPerson(getName(primaryBox), Sale.getInstance(), Double.parseDouble(getSplit(primaryBox))/100);
 
         // construct secondary director list
         secondarySalesPeople = new ArrayList<SalesPerson>();

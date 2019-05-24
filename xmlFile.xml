@@ -1,0 +1,41 @@
+<sale>
+  <purchaser>
+    <name>John Doe</name>
+  </purchaser>
+  <recipient>
+    <name>Jane Doe</name>
+    <dob>1935-01-19</dob>
+    <age>84</age>
+    <dod>2019-05-16</dod>
+    <isDeceased>true</isDeceased>
+    <deceasedForOneYear>false</deceasedForOneYear>
+  </recipient>
+  <itemsSold>
+    <atNeed>
+      <product>MERCHANDISE</product>
+      <boardValue>USD 1.00</boardValue>
+      <commissionRate>0.05</commissionRate>
+      <commission>USD 0.05</commission>
+    </atNeed>
+    <atNeed>
+      <product>PROPERTY</product>
+      <boardValue>USD 1.00</boardValue>
+      <commissionRate>0.08</commissionRate>
+      <commission>USD 0.08</commission>
+    </atNeed>
+    <atNeed>
+      <product>PROPERTY</product>
+      <boardValue>USD 1.00</boardValue>
+      <commissionRate>0.08</commissionRate>
+      <commission>USD 0.08</commission>
+    </atNeed>
+  </itemsSold>
+  <salesGroup>
+    <primaryServiceDirector>
+      <name>Peter Edmonds</name>
+      <split>1.0</split>
+      <commission>USD 0.21</commission>
+    </primaryServiceDirector>
+    <secondaryServiceDirectors/>
+  </salesGroup>
+</sale>

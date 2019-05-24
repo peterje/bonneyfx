@@ -9,9 +9,5 @@
         <module name="bonneyfx" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="bonneyfx" target="11" />
-      <module name="javafxarchetypefxml" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

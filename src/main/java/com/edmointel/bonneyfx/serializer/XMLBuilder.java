@@ -3,16 +3,27 @@ package com.edmointel.bonneyfx.serializer;
 
 import com.edmointel.bonneyfx.model.Sale;
 import com.thoughtworks.xstream.XStream;
+import org.apache.fop.apps.FOPException;
+
+import javax.xml.transform.TransformerException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class XMLBuilder {
-    public void generate() {
+    public void generate() throws IOException, URISyntaxException, FOPException, TransformerException {
+        File xmlFile = new File("xmlFile.xml");
         XStream xStream = new XStream();
         xStream.registerConverter(new SalesPersonConverter());
         xStream.registerConverter(new ItemConverter());
         xStream.registerConverter(new RecipientConverter());
         Sale sale = Sale.getInstance();
-        String xml = xStream.toXML(sale);
-        System.out.println(xml);
+        xStream.toXML(sale, new FileWriter(xmlFile));
+        PDFBuilder pdfBuilder = new PDFBuilder();
+        URL xslPath = getClass().getClassLoader().getResource("view/fo.xsl");
+        pdfBuilder.convertToPDF(xmlFile, new File(xslPath.toURI()));
 
     }
 

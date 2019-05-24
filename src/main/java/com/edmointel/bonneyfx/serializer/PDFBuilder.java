@@ -1,32 +1,46 @@
 package com.edmointel.bonneyfx.serializer;
 
-import com.edmointel.bonneyfx.model.Sale;
-import com.lowagie.text.Document;
-import com.lowagie.text.Table;
-import com.lowagie.text.pdf.PdfWriter;
+import org.apache.fop.apps.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import javax.xml.transform.Result;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.sax.SAXResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class PDFBuilder {
-    private Sale sale;
 
-    public PDFBuilder(Sale sale) {
-        this.sale = sale;
-    }
+    public void convertToPDF(File xmlFile, File xsltFile) throws IOException, FOPException, TransformerException {
+        // the XML file which provides the input
+        StreamSource xmlSource = new StreamSource(xmlFile);
+        // create an instance of fop factory
+        FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
+        // a user agent is needed for transformation
+        FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
+        // Setup output
+        OutputStream out = new java.io.FileOutputStream("employee.pdf");
 
-    private void buildPDF() throws Exception {
-        Document doc = new Document();
         try {
-            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("test.pdf"));
-            doc.open();
-            Table table = new Table(150, 150);
+            // Construct fop with desired output format
+            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
 
+            // Setup XSLT
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer(new StreamSource(xsltFile));
 
-            doc.close();
-            writer.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            // Resulting SAX events (the generated FO) must be piped through to FOP
+            Result res = new SAXResult(fop.getDefaultHandler());
+
+            // Start XSLT transformation and FOP processing
+            // That's where the XML is first transformed to XSL-FO and then
+            // PDF is created
+            transformer.transform(xmlSource, res);
+        } finally {
+            out.close();
         }
     }
 }

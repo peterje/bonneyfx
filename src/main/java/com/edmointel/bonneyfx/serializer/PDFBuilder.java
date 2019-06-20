@@ -11,6 +11,7 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URL;
 
 public class PDFBuilder {
 
@@ -42,5 +43,11 @@ public class PDFBuilder {
         } finally {
             out.close();
         }
+    }
+
+    public static void main(String[] args) throws Exception{
+        PDFBuilder pdfBuilder = new PDFBuilder();
+//        URL xslPath = getResource("view/fo.xsl");
+        pdfBuilder.convertToPDF(new File("xmlFile.xml"), new File("/home/peter/idea/bonneyfx/src/main/resources/view/fo.xsl"));
     }
 }

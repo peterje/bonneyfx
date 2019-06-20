@@ -23,9 +23,12 @@ public class RecipientConverter implements Converter {
         hierarchicalStreamWriter.setValue(Integer.toString(recipient.getAge()));
         hierarchicalStreamWriter.endNode();
 
-        hierarchicalStreamWriter.startNode("dod");
-        hierarchicalStreamWriter.setValue(recipient.getDateOfDeath().toString());
-        hierarchicalStreamWriter.endNode();
+        if(recipient.isDeceased())
+        {
+            hierarchicalStreamWriter.startNode("dod");
+            hierarchicalStreamWriter.setValue(recipient.getDateOfDeath().toString());
+            hierarchicalStreamWriter.endNode();
+        }
 
         hierarchicalStreamWriter.startNode("isDeceased");
         hierarchicalStreamWriter.setValue(Boolean.toString(recipient.isDeceased()));

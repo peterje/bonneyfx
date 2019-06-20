@@ -31,6 +31,10 @@ public class PreNeedItem extends Item {
         return result.toString();
     }
 
+    public PlotCode getPlotCode() {
+        return plotCode;
+    }
+
     @Override
     public double getCommissionRate() {
         double rate = 0.0;
@@ -50,6 +54,15 @@ public class PreNeedItem extends Item {
             rate += 0.01;
 
         return rate;
+    }
+
+    public LeadCode getLeadCode() {
+        return leadCode;
+    }
+
+    public boolean fullPay()
+    {
+        return downPayment.equals(boardValue);
     }
 
     @Override

@@ -41,7 +41,10 @@ public class Recipient extends Person {
     }
 
     public boolean diedOverOneYearAgo() {
-        return Period.between(dateOfDeath, LocalDate.now()).getYears() > 1;
+        if(isDeceased)
+            return Period.between(dateOfDeath, LocalDate.now()).getYears() > 1;
+        else
+            return false;
     }
 
     public boolean isDeceased() {

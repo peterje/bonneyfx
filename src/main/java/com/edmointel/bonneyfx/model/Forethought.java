@@ -46,6 +46,10 @@ public class Forethought extends Item {
             return Utils.toUSD("0.00");
     }
 
+    public int getPayPlan() {
+        return payPlan;
+    }
+
     private double getInsuranceRate() {
         int recipientAge = sale.getRecipient().getAge();
 

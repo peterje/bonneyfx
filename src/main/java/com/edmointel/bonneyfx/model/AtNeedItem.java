@@ -44,6 +44,10 @@ public class AtNeedItem extends Item {
         return rate;
     }
 
+    public PlotCode getPlotCode() {
+        return plotCode;
+    }
+
     @Override
     public Money getFlatCommission() {
         return Utils.toUSD("0.00");

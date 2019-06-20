@@ -1,9 +1,6 @@
 package com.edmointel.bonneyfx.serializer;
 
-import com.edmointel.bonneyfx.model.AtNeedItem;
-import com.edmointel.bonneyfx.model.Forethought;
-import com.edmointel.bonneyfx.model.Item;
-import com.edmointel.bonneyfx.model.PreNeedItem;
+import com.edmointel.bonneyfx.model.*;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -26,10 +23,47 @@ public class ItemConverter implements Converter {
         hierarchicalStreamWriter.setValue(Double.toString(item.getCommissionRate()));
         hierarchicalStreamWriter.endNode();
 
-
         hierarchicalStreamWriter.startNode("commission");
         hierarchicalStreamWriter.setValue(item.getCommission().toString());
         hierarchicalStreamWriter.endNode();
+
+        if(item.getProduct().equals(Product.PROPERTY))
+        {
+            hierarchicalStreamWriter.startNode("plotcode");
+            if(item instanceof AtNeedItem)
+                hierarchicalStreamWriter.setValue(((AtNeedItem)(item)).getPlotCode().toString());
+            else
+                hierarchicalStreamWriter.setValue(((PreNeedItem)(item)).getPlotCode().toString());
+            hierarchicalStreamWriter.endNode();
+        }
+
+        // leadcode
+        if(item instanceof PreNeedItem){
+            hierarchicalStreamWriter.startNode("leadCode");
+            hierarchicalStreamWriter.setValue(((PreNeedItem)(item)).getLeadCode().toString());
+            hierarchicalStreamWriter.endNode();
+        }
+        // fullpay
+        if(item instanceof PreNeedItem){
+            hierarchicalStreamWriter.startNode("fullPay");
+            hierarchicalStreamWriter.setValue(Boolean.toString(((PreNeedItem)(item)).fullPay()));
+            hierarchicalStreamWriter.endNode();
+        }
+        // age
+        if(item.getProduct().equals(Product.INSURANCE))
+        {
+            hierarchicalStreamWriter.startNode("age");
+            hierarchicalStreamWriter.setValue(Integer.toString(Sale.getInstance().getRecipient().getAge()));
+            hierarchicalStreamWriter.endNode();
+        }
+        // payplan
+        if(item.getProduct().equals(Product.INSURANCE))
+        {
+            hierarchicalStreamWriter.startNode("payPlan");
+            hierarchicalStreamWriter.setValue(Integer.toString(((Forethought)(item)).getPayPlan()));
+            hierarchicalStreamWriter.endNode();
+        }
+
     }
 
     @Override

@@ -1,40 +1,38 @@
 <sale>
   <purchaser>
-    <name>John Doe</name>
+    <name>Jane Doe</name>
   </purchaser>
   <recipient>
-    <name>Jane Doe</name>
+    <name>John Doe</name>
     <dob>1935-01-19</dob>
     <age>84</age>
-    <dod>2019-05-16</dod>
-    <isDeceased>true</isDeceased>
+    <isDeceased>false</isDeceased>
     <deceasedForOneYear>false</deceasedForOneYear>
   </recipient>
   <itemsSold>
-    <atNeed>
+    <preNeed>
+      <product>PROPERTY</product>
+      <boardValue>USD 1200.00</boardValue>
+      <commissionRate>0.16</commissionRate>
+      <commission>USD 192.00</commission>
+      <plotcode>_11</plotcode>
+      <leadCode>PERSONAL</leadCode>
+      <fullPay>true</fullPay>
+    </preNeed>
+    <preNeed>
       <product>MERCHANDISE</product>
-      <boardValue>USD 1.00</boardValue>
-      <commissionRate>0.05</commissionRate>
-      <commission>USD 0.05</commission>
-    </atNeed>
-    <atNeed>
-      <product>PROPERTY</product>
-      <boardValue>USD 1.00</boardValue>
+      <boardValue>USD 600.00</boardValue>
       <commissionRate>0.08</commissionRate>
-      <commission>USD 0.08</commission>
-    </atNeed>
-    <atNeed>
-      <product>PROPERTY</product>
-      <boardValue>USD 1.00</boardValue>
-      <commissionRate>0.08</commissionRate>
-      <commission>USD 0.08</commission>
-    </atNeed>
+      <commission>USD 48.00</commission>
+      <leadCode>PERSONAL</leadCode>
+      <fullPay>false</fullPay>
+    </preNeed>
   </itemsSold>
   <salesGroup>
     <primaryServiceDirector>
       <name>Peter Edmonds</name>
       <split>1.0</split>
-      <commission>USD 0.21</commission>
+      <commission>USD 240.00</commission>
     </primaryServiceDirector>
     <secondaryServiceDirectors/>
   </salesGroup>

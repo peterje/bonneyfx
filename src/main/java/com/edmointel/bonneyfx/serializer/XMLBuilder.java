@@ -31,7 +31,6 @@ public class XMLBuilder {
         PDFBuilder pdfBuilder = new PDFBuilder();
         URL xslPath = getClass().getClassLoader().getResource("view/fo.xsl");
         pdfBuilder.convertToPDF(xmlFile, new File(xslPath.toURI()));
-
     }
 
 }

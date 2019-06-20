@@ -70,7 +70,7 @@ public class DirectorsInfoController implements Initializable {
         for (HBox h : inputBoxes)
             if (!h.isDisabled())
                 sum += Double.parseDouble(getSplit(h));
-        if (sum != 100.0)
+        if (sum > 100.0 || sum < 99.9) // todo fix this utter shitstorm
             return false;
         return true;
     }

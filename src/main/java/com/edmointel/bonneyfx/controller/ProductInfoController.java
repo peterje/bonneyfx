@@ -107,7 +107,10 @@ public class ProductInfoController implements Initializable {
         resetComboBox(plotCodeSelect);
 
         if (forethoughProducts.contains(product)) {
-            planSelect.setDisable(false);
+            if(product.equals(Product.INSURANCE))
+                planSelect.setDisable(false);
+            else
+                planSelect.setDisable(true);
             faceAmount.setDisable(false);
             boardValueField.setDisable(true);
         } else {
@@ -136,11 +139,13 @@ public class ProductInfoController implements Initializable {
         Money downPayment;
 
         // add item to sale
-        if (atNeedSale) { // at need
+        if (atNeedSale && !isForethought(product)) { // at need
             boardValue = Utils.toUSD(boardValueField.getText());
             item = new AtNeedItem(product, boardValue,Sale.getInstance(), plotCode);
         } else if (isForethought(product)) { // forethought
-            int payPlan = planSelect.getValue();
+            int payPlan = 0;
+            if(product.equals(Product.INSURANCE))
+                payPlan = planSelect.getValue();
             boardValue = Utils.toUSD(faceAmount.getText());
             item = new Forethought(product, boardValue, Sale.getInstance(), payPlan);
         } else { // pre need
@@ -210,5 +215,4 @@ public class ProductInfoController implements Initializable {
         enableFields(Product.MERCHANDISE);
     }
 
-    // todo generate pdf with xmlbuilder
 }

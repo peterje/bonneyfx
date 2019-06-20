@@ -1,51 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="bonneyfx" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a29875-450e-4f01-ae73-6a7d7ea9c682" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/edmointel/bonneyfx/serializer/PDFBuilderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/bonneyfx.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/employee.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fo.xsl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/DirectorsInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/DirectorsInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/ProductInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/ProductInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/AtNeedItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/AtNeedItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/Forethought.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/Forethought.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/PreNeedItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/PreNeedItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/Recipient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/Recipient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/ItemConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/ItemConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/PDFBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/PDFBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/RecipientConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/RecipientConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/XMLBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/XMLBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/fo.xsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/fo.xsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/controller/DirectorsInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/controller/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/controller/ProductInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/controller/RecipientInfoController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/controller/RecipientInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/AtNeedItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/Forethought.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/LeadCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/Person.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/PlotCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/PreNeedItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/Recipient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/Sale.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/SalesGroup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/SalesPerson.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/model/Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/ItemConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/PDFBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/PDFBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/RecipientConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/RecipientConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/SalesPersonConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/SalesPersonConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/XMLBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/edmointel/bonneyfx/serializer/XMLBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/fo.xsl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/fo.xsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xmlFile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xmlFile.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -75,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/view/fo.xsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="75" column="47" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
+            <state relative-caret-position="188">
+              <caret line="96" column="52" selection-start-line="96" selection-start-column="52" selection-end-line="96" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -102,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/ItemConverter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+              <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -115,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/Forethought.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1">
-              <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+              <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
               <folding>
                 <element signature="e#1337#1338#0" expanded="true" />
                 <element signature="e#1367#1368#0" expanded="true" />
@@ -125,23 +92,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/AtNeedItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="46" column="2" selection-start-line="46" selection-start-column="2" selection-end-line="48" selection-end-column="5" />
-              <folding>
-                <element signature="e#1389#1390#0" expanded="true" />
-                <element signature="e#1420#1421#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/PreNeedItem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="359">
-              <caret line="62" column="27" lean-forward="true" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+              <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
               <folding>
                 <element signature="e#1092#1093#0" expanded="true" />
                 <element signature="e#1123#1124#0" expanded="true" />
@@ -155,10 +109,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/Sale.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/PDFBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-166">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="113">
+              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="166" column="40" lean-forward="true" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+              <folding>
+                <element signature="e#114#115#0" expanded="true" />
+                <element signature="e#141#142#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -169,6 +148,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -184,7 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/edmointel/bonneyfx/serializer/PDFBuilderTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/PDFBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/ProductInfoController.java" />
@@ -198,6 +177,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/RecipientConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/Recipient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/ItemConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/Application.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -292,39 +273,6 @@
               <item name="bonneyfx" type="b2602c69:ProjectViewProjectNode" />
               <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bonneyfx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
-              <item name="serializer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bonneyfx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bonneyfx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bonneyfx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -350,6 +298,11 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
               <item name="serializer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bonneyfx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bonneyfx" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -364,10 +317,10 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -392,7 +345,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.bonneyfx [exec:java]">
+  <component name="RunManager" selected="Maven.bonneyfx JAR">
     <configuration name="PDFBuilder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.edmointel.bonneyfx.serializer.PDFBuilder" />
       <module name="bonneyfx" />
@@ -405,6 +358,33 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="bonneyfx JAR" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+                <option value="assembly:single" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
     </configuration>
     <configuration name="bonneyfx [exec:java]" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
@@ -432,6 +412,11 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.PDFBuilder" />
+      <item itemvalue="Maven.bonneyfx [exec:java]" />
+      <item itemvalue="Maven.bonneyfx JAR" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.PDFBuilder" />
@@ -449,12 +434,20 @@
       <option name="presentableId" value="Default" />
       <updated>1558713611592</updated>
     </task>
+    <task id="LOCAL-00001" summary="added more pdf features">
+      <created>1561015274295</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1561015274295</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="17" width="1924" height="1065" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977307" visible="true" weight="0.18210863" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977307" visible="true" weight="0.22790202" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -482,6 +475,10 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="PlantUML" order="8" weight="0.34085903" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added more pdf features" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more pdf features" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />
@@ -515,23 +512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="117" column="20" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/PDFBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="50" column="123" selection-start-line="50" selection-start-column="123" selection-end-line="50" selection-end-column="123" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -612,7 +592,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/PreNeedItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
-          <caret line="62" column="27" lean-forward="true" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
+          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
           <folding>
             <element signature="e#1092#1093#0" expanded="true" />
             <element signature="e#1123#1124#0" expanded="true" />
@@ -627,7 +607,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/model/Forethought.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1">
-          <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
           <folding>
             <element signature="e#1337#1338#0" expanded="true" />
             <element signature="e#1367#1368#0" expanded="true" />
@@ -646,13 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
           <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/view/fo.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="75" column="47" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -676,7 +649,42 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/ItemConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/view/fo.xsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="96" column="52" selection-start-line="96" selection-start-column="52" selection-end-line="96" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/serializer/PDFBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/edmointel/bonneyfx/controller/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding>
+            <element signature="e#114#115#0" expanded="true" />
+            <element signature="e#141#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="166" column="40" lean-forward="true" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -686,10 +694,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>bonneyfx</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

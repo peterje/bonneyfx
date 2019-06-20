@@ -6,6 +6,7 @@
 /home/peter/idea/bonneyfx/src/main/java/com/edmointel/bonneyfx/model/PreNeedItem.java
 /home/peter/idea/bonneyfx/src/main/java/com/edmointel/bonneyfx/serializer/SalesPersonConverter.java
 /home/peter/idea/bonneyfx/src/main/java/com/edmointel/bonneyfx/controller/RecipientInfoController.java
+/home/peter/idea/bonneyfx/src/main/java/com/edmointel/bonneyfx/controller/Application.java
 /home/peter/idea/bonneyfx/src/main/java/com/edmointel/bonneyfx/model/LeadCode.java
 /home/peter/idea/bonneyfx/src/main/java/com/edmointel/bonneyfx/model/Recipient.java
 /home/peter/idea/bonneyfx/src/main/java/com/edmointel/bonneyfx/serializer/XMLBuilder.java

@@ -15,7 +15,7 @@ import java.net.URL;
 
 public class PDFBuilder {
 
-    public void convertToPDF(File xmlFile, File xsltFile) throws IOException, FOPException, TransformerException {
+    public void convertToPDF(File xmlFile, StreamSource xsltFile) throws IOException, FOPException, TransformerException {
         // the XML file which provides the input
         StreamSource xmlSource = new StreamSource(xmlFile);
         // create an instance of fop factory
@@ -31,7 +31,7 @@ public class PDFBuilder {
 
             // Setup XSLT
             TransformerFactory factory = TransformerFactory.newInstance();
-            Transformer transformer = factory.newTransformer(new StreamSource(xsltFile));
+            Transformer transformer = factory.newTransformer(xsltFile);
 
             // Resulting SAX events (the generated FO) must be piped through to FOP
             Result res = new SAXResult(fop.getDefaultHandler());
@@ -43,11 +43,5 @@ public class PDFBuilder {
         } finally {
             out.close();
         }
-    }
-
-    public static void main(String[] args) throws Exception{
-        PDFBuilder pdfBuilder = new PDFBuilder();
-//        URL xslPath = getResource("view/fo.xsl");
-        pdfBuilder.convertToPDF(new File("xmlFile.xml"), new File("/home/peter/idea/bonneyfx/src/main/resources/view/fo.xsl"));
     }
 }

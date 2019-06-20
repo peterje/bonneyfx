@@ -9,9 +9,11 @@ import com.thoughtworks.xstream.XStream;
 import org.apache.fop.apps.FOPException;
 
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -29,8 +31,10 @@ public class XMLBuilder {
         Sale sale = Sale.getInstance();
         xStream.toXML(sale, new FileWriter(xmlFile));
         PDFBuilder pdfBuilder = new PDFBuilder();
-        URL xslPath = getClass().getClassLoader().getResource("view/fo.xsl");
-        pdfBuilder.convertToPDF(xmlFile, new File(xslPath.toURI()));
+//        URL xslPath = getClass().getClassLoader().getResource("view/fo.xsl");
+        InputStream in = XMLBuilder.class.getClassLoader().getResourceAsStream("view/fo.xsl");
+        StreamSource xslSrc = new StreamSource(in);
+        pdfBuilder.convertToPDF(xmlFile, xslSrc);
     }
 
 }
